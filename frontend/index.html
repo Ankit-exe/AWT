@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login_page</title>
+</head>
+<div  class="animation-area">
+    <ul class="box-area">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<body onload="myfunction()">
+    <div class="loading" id="poud">
+        <ul class="load_center" >
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+
+    </div>
+    <script>
+    function  myfunction1(){
+        var preooo=document.getElementById("poud");
+        preooo.style.display="none";
+      
+    }
+function myfunction(){
+  setTimeout(myfunction1, 600);
+}
+</script>
+<div class="dark">
+    <input type="checkbox" class="hehe" onclick="tune()">
+</div>
+
+<section>
+    <form>
+    <div class="box"><br>
+        <section>
+        <div class="hoho">
+            <div class="jojo">
+
+            </div>
+            <img src="dod.png" class="pic">
+            <div class="left_side">
+        <p1 class="head">Sign-In</p1><br><br>
+        <div class="text-area">
+            <input type="text" id="user" class="sure" placeholder=" ">
+            <label for="user" class="name">USERNAME</label>
+
+
+        </div>
+
+        <div class="text-area">
+            <input type="password" id="yuo" class="sure"placeholder=" " maxlength="16" minlength="8">
+            <label for="yuo" class="name">PASSWORD</label>
+    
+
+        </div>
+        <div class="check-box">
+            <input type="checkbox" class="check" onclick="chun()"><p2 class="paan">SHOW PASSWORD</p2>
+        </div>
+        <div class="log_in">
+            Dont have an account? <a href="#">Sign-up</a>
+ 
+         </div>
+     
+        <div class="submit-area">
+            <input type="reset" class="topi">
+            <input type="button" value="Sign-in" class="topi" onclick="window.location.href=
+            'index.html';">
+    
+</div>
+<div class="social">
+   <h1> Sign-In with Social Medias </h1>
+   <div class="emugu">
+    <a href="#" ><img src="facebook-logo.png"></a>
+    <a href="#" ><img src="search.png"></a>
+    <a href="#" ><img src="twitter.png"></a>
+</div>
+
+</div>
+</div>
+</section>
+
+ </div>
+</from>
+
+<input type="button" class="tup" onclick="jop()" value="TOP" id="myBtn">
+</section>
+</body>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    body{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        height:100vh;
+        background: var(--back);
+    }
+    :root{
+        --box_border:2px rgb(255, 255, 255) solid;
+        --head:rgba(29, 84, 235, 0.795);
+        --box_text:2px rgb(82, 118, 219) solid;
+        --back_ground: rgba(202, 214, 255, 0.76);
+        --white:rgb(0, 0, 0);
+        --box: rgba(0, 97, 177, 0.452);
+    --back:linear-gradient(to right,rgb(226, 47, 226) ,rgba(87, 230, 255, 0.959));
+    --height:-200px;
+    --border:2px rgba(0, 81, 255, 0.274) solid;
+    --boxu:rgba(224, 224, 224, 0.507);
+    }
+    .dark-mode{
+        --box_border:2px rgb(255, 255, 255) solid;
+        --head:rgb(0, 32, 75);
+        --box_text:2px rgb(55, 91, 146) solid;
+        --back_ground: rgb(0, 0, 0);
+        --white:rgb(0, 0, 0);
+        --back:rgb(0, 0, 0);
+        --boxu:rgba(211, 211, 211, 0.555);
+        --border:2px rgb(255, 255, 255) solid;
+        --box: rgba(179, 179, 179, 0.699);
+    }
+    .colum{
+    display: grid;
+    align-items :center;
+
+    }
+    .box{
+        place-items:left;
+        height: 550px;
+        width: 950px;
+        border:var(--box_border);
+        border-radius: 12px;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 20px 40px;
+        background-color: var(--boxu);
+        box-shadow:  20px 20px 20px 5px rgba(99, 95, 95, 0.582);
+    }
+    .head{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        border-bottom: 4px solid rgb(255, 58, 150);
+        width: 120px;
+        margin-left: 75px;
+        
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--head);
+    }
+    .text-area{
+        
+        padding: 20px 20px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        -webkit-appearance: none;
+    
+        
+    }
+    .sure{
+      -webkit-appearance: none;
+      height: 30px;
+      border: var(--box_text);
+      border-radius: 6px;
+      background-color: transparent;
+      padding: 5px 10px;
+      font-size: medium;
+      color:var(--white);
+      cursor: pointer;
+      background: linear-gradient(to left, transparent 50%, rgb(255, 34, 126) 50%) right;
+      background-size: 200%;
+      transition: .2s ease-out;
+
+      
+    }
+    .name{
+        position: absolute;
+        color: var(--white);
+        cursor: pointer;
+        letter-spacing: 1.5px;
+        padding: 2px;
+        
+        
+    }
+    .sure:focus{
+        border: 3px black solid;
+        cursor: text;
+        -webkit-appearance: none;
+        background: transparent;
+    }
+    .sure:hover{
+        background-position: left;
+    }
+
+
+    .sure:focus ~ .name,.sure:not(:placeholder-shown).sure:not(:focus)~.name{
+        position: absolute;
+      margin-right: 130px;
+      font-size: 10px;
+      margin-top: -40px;
+      background-color: rgb(202, 214, 255);
+      font-weight: 600;
+      font-family:Arial, Helvetica, sans-serif;
+      transition: 0.3s ease-in-out;
+    }
+    .check-box{
+        justify-content: center;
+        display: flex;
+    }
+    .check{
+        height: 15px;
+        width: 15px;
+        margin: 0px 10px;
+    }
+    input[type="checkbox"]{
+        height: 20px;
+        width: 20px;
+        margin: -2px 10px;
+
+    }
+    .submit-area{
+        display: flex;
+        justify-content: center;
+        margin: 10px 20px;
+    }
+    
+    .topi{
+        margin: 10px 20px;
+        height: 35px;
+        width: 80px;
+        border-radius: 6px;
+        border: 1px rgb(255, 255, 255) solid;
+        background-color: transparent;
+        color: rgb(204, 37, 51);
+        background: linear-gradient(to left, transparent 50%, rgb(255, 34, 126) 50%) right;
+      background-size: 200%;
+      transition: .2s ease-out;
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 5px 5px;
+      letter-spacing: 0.5px;
+      font-size: medium;
+    }
+    .topi:hover{
+        background-position: left;
+        color: white;
+
+    }
+    .dark{
+        height: 25px;
+        position: absolute;
+        width: 25;
+        top :33px;
+        right: 30px;
+    }
+    .dark input[type="checkbox"]{
+        width: 80px;
+        height: 50px;
+        -webkit-appearance: none;
+        background-color: rgb(30, 229, 255);
+        border-radius: 50px;
+        border: 2px black solid;
+        outline: none;
+    }
+    .dark input:checked[type="checkbox"]{
+     
+     background-color: rgb(0, 0, 0);
+     border: 2px rgb(255, 255, 255) solid;
+     
+ }
+ .dark input[type="checkbox"]::before{
+        content: " ";
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        top:5.5px;
+        background-color: rgb(236, 232, 22);
+        border-radius: 50%;
+        left: 22px;
+        transition-duration: 0.5s;
+      
+        
+    }
+    .dark input:checked[type="checkbox"]::before{
+        left: 44px;
+    }
+    .dark input[type="checkbox"]::after{
+        content: " ";
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        top:6px;
+        background-color: transparent;
+        border-radius: 50%;
+        left: 2px;
+        transition-duration: 0.5s;
+    }
+    .dark input:checked[type="checkbox"]::after
+    {
+        left: 34px;
+        background-color: black;
+    }
+    .paan{
+        color: var(--white);
+    }
+  .box-area{
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        height: 105vh;
+        width: 100%;
+        z-index:-1;
+        filter: blur(0.2px);
+
+    }
+    .box-area li{
+        position: absolute;
+        height: 75px;
+        width: 75px;
+        left:10%;
+        background-color:var(--box);
+        list-style: none;
+        border-radius: 10%;
+        animation: animate 20s linear infinite;
+        bottom: var(--height);
+        opacity: 0.5;
+        border: var(--border);
+    }
+    .box-area li:nth-child(1){
+        position: absolute;
+        height: 45px;
+        width: 45px;
+        left:20%;
+        background-color:var(--box);
+        list-style: none;
+        border-radius: 10%;
+        animation: animate 30s linear infinite;
+        bottom: var(--height);
+        opacity: 0.5;
+        border: var(--border);
+    }
+    .box-area li:nth-child(2){
+        position: absolute;
+        height: 85px;
+        width: 85px;
+        left:30%;
+        background-color:var(--box);
+        list-style: none;
+        border-radius: 10%;
+        animation: animate 24s linear infinite;
+        bottom:  var(--height);
+        opacity: 0.5;
+        border: var(--border);
+    }
+    .box-area li:nth-child(3){
+        position: absolute;
+        height: 100px;
+        width: 100px;
+        left:45%;
+        background-color:var(--box);
+        list-style: none;
+        border-radius: 10%;
+        animation: animate 20s linear infinite;
+        bottom:  var(--height);
+        opacity: 0.5;
+        border: var(--border);
+    }
+    .box-area li:nth-child(4){
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        left:60%;
+        background-color:var(--box);
+        list-style: none;
+        border-radius: 10%;
+        animation: animate 28s linear infinite;
+        bottom:  var(--height);
+        opacity: 0.5;
+        border: var(--border);
+    
+    }
+    .box-area li:nth-child(5){
+        position: absolute;
+        height: 110px;
+        width: 110px;
+        left:70%;
+        background-color:var(--box);
+        list-style: none;
+        border-radius: 10%;
+        animation: animate 30s linear infinite;
+        bottom: var(--height);
+        opacity: 0.5;
+        border: var(--border);
+    }
+    .box-area li:nth-child(6){
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        left:90%;
+        background-color:var(--box);
+        list-style: none;
+        border-radius: 10%;
+        animation: animate 20s linear infinite;
+        bottom: var(--height);
+        opacity: 0.5;
+        border: var(--border);
+    }
+    @keyframes animate{
+        0%{
+            transform: translateY(0) rotate(0deg);
+            opacity: 1;
+        }
+        100%{
+            transform: translateY(-800px) rotate(360deg);
+            opacity: 0;
+        }
+    }
+    #myBtn{
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        background-color: rgb(253, 255, 138);
+        height: 65px;
+        width: 55px;
+        border-radius: 10%;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        font-family:Arial, Helvetica, sans-serif;
+        border: none;
+        display: none;
+        cursor: pointer;
+        transition: 0.4s ease-in-out;
+        
+    }
+    .pic{ 
+        position: absolute;
+        height: 500px;
+        width: 475px;
+        border-top-right-radius:  20px;
+        border-bottom-left-radius:  20px;
+       
+        
+    }
+    section{
+        display: flex;
+    }
+
+    .left_side{
+        position: absolute;
+        margin-top:50px;
+        margin-left: 600px;
+    }
+    .left_side .log_in{
+        font-size: 15px;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      
+    }
+    .load_center{
+    position: fixed;
+    left: 0;
+    top:0;
+    height: 100%;
+    width: 100%;
+    z-index:999;
+    background-color:rgba(255, 255, 255, 0.459);
+    backdrop-filter: blur(1px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease;
+    list-style: none;
+}
+.load_center.fade-out{
+    opacity: 0;
+}
+.load_center li{
+    border: 2px solid transparent;
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.6;
+    border-top-color: transparent !important;
+    border-bottom-color: transparent !important;
+    animation: spin 1s linear infinite ;
+}
+.load_center li:nth-child(1){
+    height: 60px;
+    width: 60px;
+    border-color: rgb(255, 0, 119);
+    
+}
+.load_center li:nth-child(2){
+    height: 45px;
+    width: 45px;
+    border-color: blue;
+    animation-duration: 1.2s;
+    
+}
+.load_center li:nth-child(3){
+    height: 30px;
+    width: 30px;
+    border-color:orange;
+    
+}
+@keyframes spin {
+    0%{
+        transform: rotate(0deg);
+        
+    }
+    100%{
+        transform: rotate(360deg);
+        
+    }
+    
+}
+.social img{
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+    border-radius: 50%;
+
+    
+}
+.social img:hover{
+    background-color: rgb(245, 50, 125);
+  
+    transition: 0.4s ease-in-out;
+}
+h1{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.emugu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px ;
+    
+}
+
+
+   
+
+    ::-webkit-inner-spin-button{
+        display: none;
+    }
+    ::-webkit-scrollbar{
+        width: 7px;
+    }
+    ::-webkit-scrollbar-track{
+        background-color: rgb(255, 137, 239);
+
+    }
+    ::-webkit-scrollbar-thumb{
+        background-color: rgb(227, 255, 102);
+    }
+</style>
+<script>
+    function chun(){
+var x= document.getElementById("yuo");
+if (x.type === "password"){
+x.type="text";
+}
+else{
+x.type="password";
+}
+document.getElementById('yuo').checked = false
+    }
+function tune(){
+    document.body.classList.toggle("dark-mode");
+}
+    
+mybutton = document.getElementById("myBtn");
+
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10
+
+  ) {
+   mybutton.style.display = "block";
+} else {
+   mybutton.style.display = "none";
+ }
+ 
+}
+function jop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+
+
+</script>
+</html>
+
