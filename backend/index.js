@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 
 const app = express();
 
@@ -6,10 +6,41 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req,res) => {
-    res.send("Hello World!")
-})
+let quotes = [
+  { id: 1, text: "Life is what happens when you're busy making other plans." },
+  { id: 2, text: "The way to get started is to quit talking and begin doing." },
+  {
+    id: 3,
+    text: "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+  },
+  {
+    id: 4,
+    text: "The future belongs to those who believe in the beauty of their dreams.",
+  },
+  { id: 5, text: "In the middle of difficulty lies opportunity." },
+];
 
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
+app.get("/quotes", (req, res) => {
+  res.json(quotes);
+});
+
+app.post("/quotes", (req, res) => {
+  const quote = { id: quotes.length + 1, text: req.body.text };
+  quotes.push(quote);
+  res.status(201).json(quote);
+});
+
+app.get("/quotes/:id", (req, res) => {
+  const quote = quotes.find((quote) => quote.id === parseInt(req.params.id));
+  if (!quote) {
+    return res.status(404).json({ message: "Quote not found" });
+  }
+  res.json(quote);
+});
 
 const PORT = process.env.PORT || 7000;
 app.listen(PORT, () => {
