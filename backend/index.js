@@ -20,6 +20,11 @@ let quotes = [
   { id: 5, text: "In the middle of difficulty lies opportunity." },
 ];
 
+
+const db = require('better-sqlite3')('data.db');
+
+db.prepare('CREATE TABLE IF NOT EXISTS quotes (id INTEGER PRIMARY KEY AUTOINCREMENT, text TEXT NOT NULL)').run();
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
@@ -28,11 +33,11 @@ app.get("/quotes", (req, res) => {
   res.json(quotes);
 });
 
-app.post("/quotes", (req, res) => {
+ /* app.post("/quotes", (req, res) => {
   const quote = { id: quotes.length + 1, text: req.body.text };
   quotes.push(quote);
   res.status(201).json(quote);
-});
+}); */
 
 app.get("/quotes/:id", (req, res) => {
   const quote = quotes.find((quote) => quote.id === parseInt(req.params.id));
@@ -41,6 +46,12 @@ app.get("/quotes/:id", (req, res) => {
   }
   res.json(quote);
 });
+
+app.post('/quotes', (req,res) => {
+  const {text} = req.body;
+  const info = db.prepare('INSERT INTO quotes (text) VALUES (?)').run(text);
+  res.status(201).json({id: info.lastInsertRowid, text});
+})
 
 const PORT = process.env.PORT || 7000;
 app.listen(PORT, () => {
