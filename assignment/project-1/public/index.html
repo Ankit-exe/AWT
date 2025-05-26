@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quotes App</title>
+
+    <!--   
+#######################  STYLES  ######################    
+-->
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        max-width: 600px;
+        margin: auto;
+        background-color: #e1f6f9;
+      }
+
+      h1 {
+        font-size: 50px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 700;
+      }
+
+      h2 {
+        font-size: 50px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 700;
+      }
+
+      .quote {
+        border-left: 4px solid #22778c;
+        padding-left: 12px;
+        margin-bottom: 16px;
+        background-color: rgba(249, 234, 215, 0.641);
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .author {
+        color: gray;
+        font-style: italic;
+      }
+
+      form {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      input,
+      textarea,
+      button {
+        padding: 8px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        resize: none;
+        border: solid gray 1px;
+      }
+
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      #loading {
+        margin: 10px 0;
+        font-style: italic;
+        color: gray;
+      }
+    </style>
+
+    <!--   
+####################  Content  ######################    
+-->
+  </head>
+  <body>
+    <h1>Quotes</h1>
+    <div id="loading"></div>
+    <div id="quotes-container"></div>
+
+    <h2>Add a New Quote</h2>
+    <form id="quote-form">
+      <textarea
+        id="text"
+        rows="3"
+        placeholder="Quote text..."
+        required
+      ></textarea>
+      <input type="text" id="author" placeholder="Author" required />
+      <button type="submit">Add Quote</button>
+    </form>
+
+    <!--   
+####################  SCRIPTS  ######################    
+-->
+
+    <script>
+      const quotesContainer = document.getElementById("quotes-container");
+      const form = document.getElementById("quote-form");
+      const textInput = document.getElementById("text");
+      const authorInput = document.getElementById("author");
+      const loadingDiv = document.getElementById("loading");
+
+      // Fetching and displaying quotes
+      function loadQuotes() {
+        loadingDiv.textContent = "Loading quotes...";
+        quotesContainer.innerHTML = "";
+
+        fetch("http://localhost:7000/api/quotes")
+          .then((res) => res.json())
+          .then((data) => {
+            loadingDiv.textContent = ""; // Hides loading
+            if (data.length === 0) {
+              quotesContainer.innerHTML = "<p>No quotes yet.</p>";
+              return;
+            }
+
+            data.forEach((quote) => {
+              const div = document.createElement("div");
+              div.className = "quote";
+              div.innerHTML = `
+              <p>${quote.text}</p>
+              <p class="author">— ${quote.author}</p>
+            `;
+              quotesContainer.appendChild(div);
+            });
+          })
+          .catch((err) => {
+            loadingDiv.textContent = "";
+            quotesContainer.innerHTML =
+              "<p style='color:red;'>Failed to load quotes.</p>";
+            console.error("Error fetching quotes:", err);
+          });
+      }
+
+      // submit form
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const text = textInput.value.trim();
+        const author = authorInput.value.trim();
+
+        if (!text || !author) return;
+
+        loadingDiv.textContent = "Submitting quote...";
+
+        try {
+          const res = await fetch("http://localhost:7000/api/quotes", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ text, author }),
+          });
+
+          if (!res.ok) throw new Error("Failed to add quote");
+
+          textInput.value = "";
+          authorInput.value = "";
+          loadingDiv.textContent = "";
+          loadQuotes(); // Refresh quotes list
+        } catch (err) {
+          loadingDiv.textContent = "";
+          alert("Error adding quote.");
+          console.error(err);
+        }
+      });
+
+      // Load quotes after post request
+      loadQuotes();
+    </script>
+  </body>
+</html>
