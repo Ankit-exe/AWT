@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      style="
+        background-color: rgb(224, 134, 134);
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+        max-width: 600px;
+        padding: 20px;
+        border-radius: 10px;
+        gap: 20px;
+      "
+    >
+      <h1>Student Registration from</h1>
+      <image
+        src="/frontend/dipesh.jpg"
+        style="height: 110px; border-radius: 10px"
+      />
+      <form>
+        <label>Name:</label>
+        <input
+          type="text"
+          placeholder="Enter your name"
+          style="border: none; border-radius: 2px; height: 20px; padding: 4px"
+        />
+        <button type="submit">Submit</button>
+        <br />
+        <a href="">Login</a>
+        <a href="">Register</a>
+      </form>
+    </div>
+  </body>
+
+  <script>
+    function strFunction() {
+      const value = "something";
+      return value;
+    }
+
+    function numFunciton() {
+      const value = 1;
+      return value;
+    }
+
+    const rolls = [50, 60, 23, 10, 2, 7, 80];
+
+    function roll() {
+      rolls.map((roll) => {
+        console.log(
+          roll >= 20 ? `${roll} is in Group A` : `${roll} is in Group B`
+        );
+      });
+    }
+
+    roll();
+
+    const amount = 50000;
+
+    function LoyaltyPoints() {
+      const points = amount * 0.01;
+      console.log(`Loyalty points earned: ${points}`);
+      return points;
+    }
+
+    LoyaltyPoints();
+  </script>
+</html>
